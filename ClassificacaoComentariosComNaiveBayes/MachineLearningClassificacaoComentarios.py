@@ -14,7 +14,7 @@ def obter_dados_das_fontes():
 
     with open(diretorio_base + "imdb_labelled.txt", "r") as arquivo_texto:
         dados = arquivo_texto.read().split('\n')
-
+         
     with open(diretorio_base + "amazon_cells_labelled.txt", "r") as arquivo_texto:
         dados += arquivo_texto.read().split('\n')
 

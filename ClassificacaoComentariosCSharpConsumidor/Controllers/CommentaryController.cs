@@ -16,7 +16,7 @@ namespace ClassificacaoComentariosCSharpConsumidor.Controllers
         [HttpGet("{text}")]
         public ActionResult<PredictionResult> Get(string text)
         {
-            string diretorioBase = @"C:\Users\re035148\Documents\GitHub\IA\ClassificacaoComentariosCSharpConsumidor\";
+            string diretorioBase = @"SeuDiretorio\";
             string diretorioModelo = string.Concat(diretorioBase, "\\Model\\model.zip");
 
             MLContext mlContext = new MLContext();

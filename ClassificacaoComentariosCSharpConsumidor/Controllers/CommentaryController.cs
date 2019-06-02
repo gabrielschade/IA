@@ -16,19 +16,23 @@ namespace ClassificacaoComentariosCSharpConsumidor.Controllers
         [HttpGet("{text}")]
         public ActionResult<PredictionResult> Get(string text)
         {
-            string diretorioBase = @"SeuDiretorio\";
-            string diretorioModelo = string.Concat(diretorioBase, "\\Model\\model.zip");
+            string diretorioModelo = "Model\\model.zip";
 
             MLContext mlContext = new MLContext();
+            ITransformer model;
+
             using (var stream = new FileStream(diretorioModelo, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
-                var model = mlContext.Model.Load(stream);
-                var predictiveModel = model.CreatePredictionEngine<Commentary, PredictionResult>(mlContext);
-                return predictiveModel.Predict(new Commentary()
-                {
-                    Text = text
-                });
+                model = mlContext.Model.Load(stream, out DataViewSchema modelSchema);
             }
+
+            var predictiveModel = 
+                mlContext.Model.CreatePredictionEngine<Commentary, PredictionResult>(model);
+
+            return predictiveModel.Predict(new Commentary()
+            {
+                Text = text
+            });
         }
 
     }

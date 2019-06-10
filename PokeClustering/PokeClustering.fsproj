@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="Result\model.zip" />
+    <None Include="Result\pkmn.csv" />
+    <None Include="Dataset\pokemon.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Compile Include="Types.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FSharp.Data" Version="3.1.1" />
+    <PackageReference Include="Microsoft.ML" Version="1.1.0" />
+    <PackageReference Include="XPlot.GoogleCharts" Version="2.0.0" />
+    <PackageReference Include="XPlot.Plotly" Version="2.0.0" />
+  </ItemGroup>
+
+</Project>
